@@ -1,3 +1,4 @@
+//Task 3: Create Coffee Maker class
 package Assignment2_1;
 
 // CoffeeMaker-luokka

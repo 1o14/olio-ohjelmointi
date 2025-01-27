@@ -1,3 +1,4 @@
+//Task 2: Modified Car class
 package Assignment2_1;
 
 // Car-luokka
