@@ -7,13 +7,13 @@ class Car {
     private double fuelCapacity;  // Bensatankin kapasiteetti litroina
     private double topSpeed;      // Huippunopeus km/h
 
-    // Alkuperäinen rakentaja, joka asettaa vain mallin ja vuoden
+    // Alkuperäinen rakentaja, joka asettaa vain mallin ja valmistusvuoden
     public Car(String model, int year) {
         this.model = model;
         this.year = year;
     }
 
-    // Uusi rakentaja, joka ottaa vastaan mallin, vuoden, bensatankin kapasiteetin ja huippunopeuden
+    // Uusi rakentaja, joka ottaa vastaan mallin, valmistusvuoden, bensatankin kapasiteetin ja huippunopeuden
     public Car(String model, int year, double fuelCapacity, double topSpeed) {
         this.model = model;
         this.year = year;
@@ -66,11 +66,11 @@ class Car {
 // Pääohjelma
 public class CarMain {
     public static void main(String[] args) {
-        // Käytetään alkuperäistä rakentajaa
+        // Luodaan auto alkuperäisellä rakentajalla, jossa vain malli ja valmistusvuosi
         Car car1 = new Car("Toyota Corolla", 2020);
         car1.displayCarInfo();  // Tulostetaan auton tiedot
 
-        // Käytetään uutta rakentajaa, jossa on mukana bensatankin kapasiteetti ja huippunopeus
+        // Luodaan auto uudella rakentajalla, jossa on mukana bensatankin kapasiteetti ja huippunopeus
         Car car2 = new Car("Tesla Model 3", 2022, 50.0, 261);
         car2.displayCarInfo();  // Tulostetaan auton tiedot
     }

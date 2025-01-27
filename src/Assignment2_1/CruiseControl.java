@@ -39,9 +39,9 @@ class Vehicle {
     public void setCruiseTargetSpeed(double speed) {
         if (speed >= minAllowedSpeed && speed <= maxAllowedSpeed) {
             cruiseTargetSpeed = speed;
-            System.out.println("Cruise kohdenopeus asetettu: " + cruiseTargetSpeed + " km/h");
+            System.out.println("Cruise target speed set to: " + cruiseTargetSpeed + " km/h");
         } else {
-            System.out.println("Virheellinen nopeus. Aseta nopeus välillä " + minAllowedSpeed + " ja " + maxAllowedSpeed + " km/h.");
+            System.out.println("Invalid speed. Set a speed between " + minAllowedSpeed + " and " + maxAllowedSpeed + " km/h.");
         }
     }
 
@@ -50,16 +50,16 @@ class Vehicle {
         if (isCruiseControlActive) {
             while (currentSpeed < cruiseTargetSpeed) {
                 currentSpeed += 5;  // Kiihdytetään 5 km/h joka kerta
-                System.out.println("Kiihdytetään... Nykyinen nopeus: " + currentSpeed + " km/h");
+                System.out.println("Accelerating... Current speed: " + currentSpeed + " km/h");
             }
-            System.out.println("Cruise control on nyt kohdenopeudessa: " + cruiseTargetSpeed + " km/h");
+            System.out.println("Cruise control is now at target speed: " + cruiseTargetSpeed + " km/h");
         }
     }
 
     // Metodi sammuttamaan cruise controlin
     public void deactivateCruiseControl() {
         isCruiseControlActive = false;
-        System.out.println("Cruise control pois päältä.");
+        System.out.println("Cruise control turned off.");
     }
 
     // Metodi palauttaa nykyisen nopeuden
@@ -74,10 +74,10 @@ class Vehicle {
 
     // Metodi tulostaa ajoneuvon tiedot
     public void displayVehicleInfo() {
-        System.out.println("Ajoneuvon malli: " + carModel);
-        System.out.println("Vuosi: " + carYear);
-        System.out.println("Polttoainetankin kapasiteetti: " + fuelTankCapacity + " litraa");
-        System.out.println("Maksiminopeus: " + maxSpeed + " km/h");
+        System.out.println("Vehicle model: " + carModel);
+        System.out.println("Year: " + carYear);
+        System.out.println("Fuel tank capacity: " + fuelTankCapacity + " liters");
+        System.out.println("Max speed: " + maxSpeed + " km/h");
     }
 }
 
@@ -96,18 +96,18 @@ public class CruiseControl {
 
         // Tarkistetaan, käynnistettiinkö cruise control onnistuneesti
         if (cruiseControlStatus) {
-            System.out.println("Cruise control päällä, ajoneuvo kiihdyttää...");
+            System.out.println("Cruise control activated, vehicle is accelerating...");
         } else {
-            System.out.println("Cruise controlin käynnistys epäonnistui. Kohdenopeus ei kelpaa.");
+            System.out.println("Cruise control activation failed. Target speed is not valid.");
         }
 
         // Tulostetaan nykyinen nopeus
-        System.out.println("Nykyinen nopeus: " + myVehicle.getCurrentSpeed() + " km/h");
+        System.out.println("Current speed: " + myVehicle.getCurrentSpeed() + " km/h");
 
         // Sammutetaan cruise control
         myVehicle.deactivateCruiseControl();
 
         // Tulostetaan nykyinen nopeus cruise controlin sammuttamisen jälkeen
-        System.out.println("Nykyinen nopeus cruise controlin sammuttamisen jälkeen: " + myVehicle.getCurrentSpeed() + " km/h");
+        System.out.println("Current speed after deactivating cruise control: " + myVehicle.getCurrentSpeed() + " km/h");
     }
 }

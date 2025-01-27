@@ -1,17 +1,17 @@
 package Assignment2_1;
 
 class Television {
-    private int channel;  // Muuttuja, joka pitää kirjaa nykyisestä kanavasta
+    private int channel;  // Muuttuja, joka tallentaa nykyisen kanavan numeron
 
-    // Rakentaja, joka asettaa kanavan numeroksi 1 aluksi
+    // Rakentaja, joka asettaa kanavan numeroksi 1 alussa
     public Television() {
         this.channel = 1;
     }
 
-    // Metodi, joka katsoo nykyisen kanavan ja siirtyy seuraavaan
+    // Metodi, joka katsoo nykyistä kanavaa ja siirtyy seuraavaan
     public void watch() {
         System.out.println("Watching channel " + channel);
-        channel++;  // Siirrytään seuraavaan kanavaan
+        channel++;  // Siirrytään seuraavalle kanavalle
         if (channel > 10) {
             channel = 1;  // Jos kanava menee yli 10, palataan takaisin kanavaan 1
         }
