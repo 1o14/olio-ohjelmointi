@@ -1,113 +1,113 @@
 package Assignment2_1;
 
-// Vehicle class with cruise control feature
+// Ajoneuvo-luokka, jossa on cruise control -toiminto
 class Vehicle {
-    private String carModel;
-    private int carYear;
-    private double fuelTankCapacity;
-    private double maxSpeed;
-    private double currentSpeed;
-    private double cruiseTargetSpeed;
-    private boolean isCruiseControlActive;
-    private final double minAllowedSpeed = 10.0;   // Minimum speed that can be set
-    private final double maxAllowedSpeed = 180.0;  // Maximum speed that can be set
+    private String carModel;  // Auton malli
+    private int carYear;  // Auton vuosimalli
+    private double fuelTankCapacity;  // Polttoainetankin kapasiteetti
+    private double maxSpeed;  // Auton maksiminopeus
+    private double currentSpeed;  // Nykyinen nopeus
+    private double cruiseTargetSpeed;  // Kohdenopeus cruise controlille
+    private boolean isCruiseControlActive;  // Onko cruise control päällä
+    private final double minAllowedSpeed = 10.0;   // Miniminopeus, jonka voi asettaa
+    private final double maxAllowedSpeed = 180.0;  // Maksiminopeus, jonka voi asettaa
 
-    // Constructor that initializes vehicle details
+    // Konstruktori, joka alustaa ajoneuvon tiedot
     public Vehicle(String carModel, int carYear, double fuelTankCapacity, double maxSpeed) {
         this.carModel = carModel;
         this.carYear = carYear;
         this.fuelTankCapacity = fuelTankCapacity;
         this.maxSpeed = maxSpeed;
-        this.currentSpeed = 0;  // Initially, the vehicle is stationary
-        this.cruiseTargetSpeed = 0;   // Initially, no cruise target speed
-        this.isCruiseControlActive = false; // Cruise control is off initially
+        this.currentSpeed = 0;  // Aluksi auto on paikallaan
+        this.cruiseTargetSpeed = 0;   // Aluksi ei ole asetettu kohdenopeutta
+        this.isCruiseControlActive = false; // Cruise control on aluksi pois päältä
     }
 
-    // Method to turn on cruise control if the target speed is within the allowed range
+    // Metodi käynnistää cruise controlin, jos kohdenopeus on sallittujen rajojen sisällä
     public boolean activateCruiseControl() {
         if (cruiseTargetSpeed >= minAllowedSpeed && cruiseTargetSpeed <= maxAllowedSpeed) {
             isCruiseControlActive = true;
-            accelerateToCruiseTargetSpeed();
-            return true;  // Success
+            accelerateToCruiseTargetSpeed();  // Käynnistää kiihdytyksen kohdenopeuteen
+            return true;  // Onnistunut aktivointi
         } else {
             isCruiseControlActive = false;
-            return false; // Target speed is out of allowed range
+            return false; // Kohdenopeus on liian suuri tai pieni
         }
     }
 
-    // Method to set the cruise target speed, but only if it's within the allowed range
+    // Metodi asettaa cruise controlin kohdenopeuden, mutta vain jos se on sallittujen rajojen sisällä
     public void setCruiseTargetSpeed(double speed) {
         if (speed >= minAllowedSpeed && speed <= maxAllowedSpeed) {
             cruiseTargetSpeed = speed;
-            System.out.println("Cruise target speed set to " + cruiseTargetSpeed + " km/h");
+            System.out.println("Cruise kohdenopeus asetettu: " + cruiseTargetSpeed + " km/h");
         } else {
-            System.out.println("Invalid speed. Please set a speed between " + minAllowedSpeed + " and " + maxAllowedSpeed + " km/h.");
+            System.out.println("Virheellinen nopeus. Aseta nopeus välillä " + minAllowedSpeed + " ja " + maxAllowedSpeed + " km/h.");
         }
     }
 
-    // Internal method to accelerate the vehicle towards the target speed
+    // Sisäinen metodi, joka kiihdyttää ajoneuvoa kohti kohdenopeutta
     private void accelerateToCruiseTargetSpeed() {
         if (isCruiseControlActive) {
             while (currentSpeed < cruiseTargetSpeed) {
-                currentSpeed += 5;  // Accelerate by 5 km/h at a time
-                System.out.println("Accelerating... Current speed: " + currentSpeed + " km/h");
+                currentSpeed += 5;  // Kiihdytetään 5 km/h joka kerta
+                System.out.println("Kiihdytetään... Nykyinen nopeus: " + currentSpeed + " km/h");
             }
-            System.out.println("Cruise control is now at target speed: " + cruiseTargetSpeed + " km/h");
+            System.out.println("Cruise control on nyt kohdenopeudessa: " + cruiseTargetSpeed + " km/h");
         }
     }
 
-    // Method to turn off cruise control
+    // Metodi sammuttamaan cruise controlin
     public void deactivateCruiseControl() {
         isCruiseControlActive = false;
-        System.out.println("Cruise control turned off.");
+        System.out.println("Cruise control pois päältä.");
     }
 
-    // Method to get the current speed of the vehicle
+    // Metodi palauttaa nykyisen nopeuden
     public double getCurrentSpeed() {
         return currentSpeed;
     }
 
-    // Method to get the current cruise target speed
+    // Metodi palauttaa kohdenopeuden
     public double getCruiseTargetSpeed() {
         return cruiseTargetSpeed;
     }
 
-    // Method to display the vehicle information
+    // Metodi tulostaa ajoneuvon tiedot
     public void displayVehicleInfo() {
-        System.out.println("Vehicle model: " + carModel);
-        System.out.println("Year: " + carYear);
-        System.out.println("Fuel Tank Capacity: " + fuelTankCapacity + " liters");
-        System.out.println("Max Speed: " + maxSpeed + " km/h");
+        System.out.println("Ajoneuvon malli: " + carModel);
+        System.out.println("Vuosi: " + carYear);
+        System.out.println("Polttoainetankin kapasiteetti: " + fuelTankCapacity + " litraa");
+        System.out.println("Maksiminopeus: " + maxSpeed + " km/h");
     }
 }
 
-// Main class that tests the Vehicle class with cruise control functionality
+// Pääohjelma, joka testaa ajoneuvo-luokan cruise control -toimintoa
 public class CruiseControl {
     public static void main(String[] args) {
-        // Creating a Vehicle object
+        // Luodaan ajoneuvo-objekti
         Vehicle myVehicle = new Vehicle("Audi Q7", 2020, 65.0, 220);
 
-        // Displaying the vehicle details
+        // Tulostetaan ajoneuvon tiedot
         myVehicle.displayVehicleInfo();
 
-        // Setting the target speed and turning on cruise control
-        myVehicle.setCruiseTargetSpeed(130);  // Setting target speed to 130 km/h
+        // Asetetaan kohdenopeus ja käynnistetään cruise control
+        myVehicle.setCruiseTargetSpeed(130);  // Asetetaan kohdenopeus 130 km/h
         boolean cruiseControlStatus = myVehicle.activateCruiseControl();
 
-        // Checking if cruise control was successfully activated
+        // Tarkistetaan, käynnistettiinkö cruise control onnistuneesti
         if (cruiseControlStatus) {
-            System.out.println("Cruise control is on, vehicle is accelerating...");
+            System.out.println("Cruise control päällä, ajoneuvo kiihdyttää...");
         } else {
-            System.out.println("Failed to activate cruise control. Target speed not valid.");
+            System.out.println("Cruise controlin käynnistys epäonnistui. Kohdenopeus ei kelpaa.");
         }
 
-        // Displaying the current speed
-        System.out.println("Current speed: " + myVehicle.getCurrentSpeed() + " km/h");
+        // Tulostetaan nykyinen nopeus
+        System.out.println("Nykyinen nopeus: " + myVehicle.getCurrentSpeed() + " km/h");
 
-        // Turning off cruise control
+        // Sammutetaan cruise control
         myVehicle.deactivateCruiseControl();
 
-        // Displaying the current speed after cruise control is turned off
-        System.out.println("Current speed after cruise control off: " + myVehicle.getCurrentSpeed() + " km/h");
+        // Tulostetaan nykyinen nopeus cruise controlin sammuttamisen jälkeen
+        System.out.println("Nykyinen nopeus cruise controlin sammuttamisen jälkeen: " + myVehicle.getCurrentSpeed() + " km/h");
     }
 }
