@@ -3,7 +3,7 @@ package Assignment3_1_1;
 // Perusautoluokka
 class Car {
     protected int speed; // Nopeus km/h
-    protected int fuel;  // Polttoaine litraa
+    protected int fuel;  // Polttoaine litroina
 
     public Car() {
         this.speed = 0;
