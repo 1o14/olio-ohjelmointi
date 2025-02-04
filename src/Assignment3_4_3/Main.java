@@ -2,20 +2,20 @@ package Assignment3_4_3;
 
 import java.io.*;
 
-// Student class containing id, name, and age attributes
+// Student-luokka, joka sisältää id-, nimi- ja ikä-attribuutit
 class Student implements Serializable {
     private int id;
     private String name;
     private int age;
 
-    // Constructor
+    // Konstruktori
     public Student(int id, String name, int age) {
         this.id = id;
         this.name = name;
         this.age = age;
     }
 
-    // Getters and Setters
+    // Getterit ja setterit
     public int getId() {
         return id;
     }
@@ -46,20 +46,20 @@ class Student implements Serializable {
     }
 }
 
-// Course class containing courseCode, courseName, and instructor attributes
+// Course-luokka, joka sisältää kurssikoodin, kurssin nimen ja opettajan tiedot
 class Course implements Serializable {
     private String courseCode;
     private String courseName;
     private String instructor;
 
-    // Constructor
+    // Konstruktori
     public Course(String courseCode, String courseName, String instructor) {
         this.courseCode = courseCode;
         this.courseName = courseName;
         this.instructor = instructor;
     }
 
-    // Getters and Setters
+    // Getterit ja setterit
     public String getCourseCode() {
         return courseCode;
     }
@@ -90,20 +90,20 @@ class Course implements Serializable {
     }
 }
 
-// Enrollment class which connects Student and Course
+// Enrollment-luokka, joka yhdistää Student- ja Course-luokat
 class Enrollment implements Serializable {
     private Student student;
     private Course course;
     private String enrollmentDate;
 
-    // Constructor
+    // Konstruktori
     public Enrollment(Student student, Course course, String enrollmentDate) {
         this.student = student;
         this.course = course;
         this.enrollmentDate = enrollmentDate;
     }
 
-    // Getters and Setters
+    // Getterit ja setterit
     public Student getStudent() {
         return student;
     }
@@ -136,28 +136,28 @@ class Enrollment implements Serializable {
 
 public class Main {
     public static void main(String[] args) {
-        // Create Student, Course, and Enrollment objects
+        // Luodaan Student-, Course- ja Enrollment-oliot
         Student student = new Student(1, "John Doe", 20);
         Course course = new Course("CS101", "Introduction to Computer Science", "Dr. Smith");
         Enrollment enrollment = new Enrollment(student, course, "2025-02-04");
 
-        // File where the objects will be serialized
+        // Tiedosto, johon objektit tullaan sarjoittamaan
         String filename = "enrollments.ser";
 
-        // Serialize the Enrollment object to the file
+        // Sarjoitetaan Enrollment-objekti tiedostoon
         try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(filename))) {
             out.writeObject(enrollment);
-            System.out.println("Object serialized to file: " + filename);
+            System.out.println("Object serialized to file: " + filename); // Output on englanniksi
         } catch (IOException e) {
-            System.out.println("Error during serialization: " + e.getMessage());
+            System.out.println("Error during serialization: " + e.getMessage()); // Output on englanniksi
         }
 
-        // Deserialize the object from the file
+        // Puretaan objekti tiedostosta
         try (ObjectInputStream in = new ObjectInputStream(new FileInputStream(filename))) {
             Enrollment deserializedEnrollment = (Enrollment) in.readObject();
-            System.out.println("Deserialized object: " + deserializedEnrollment);
+            System.out.println("Deserialized object: " + deserializedEnrollment); // Output on englanniksi
         } catch (IOException | ClassNotFoundException e) {
-            System.out.println("Error during deserialization: " + e.getMessage());
+            System.out.println("Error during deserialization: " + e.getMessage()); // Output on englanniksi
         }
     }
 }
