@@ -1,3 +1,5 @@
+package Assignment1_1;
+
 public class Cat {
     private String name;
 

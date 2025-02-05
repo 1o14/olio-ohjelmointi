@@ -1,3 +1,5 @@
+package Assignment1_1;
+
 import java.util.Scanner;
 
 public class SumOfThreeNumbers {
