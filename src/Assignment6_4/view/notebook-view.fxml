@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="Assignment6_4.controller.NoteController"
+      spacing="10">
+
+    <padding>
+        <Insets top="10" right="10" bottom="10" left="10"/>
+    </padding>
+
+    <!-- Otsikon syöttökenttä -->
+    <TextField fx:id="titleField" promptText="Enter note title"/>
+
+    <!-- Sisällön syöttökenttä -->
+    <TextArea fx:id="contentArea" promptText="Enter note content"/>
+
+    <!-- Napit -->
+    <Button fx:id="addButton" text="Add"/>
+    <Button fx:id="updateButton" text="Update"/> <!-- Päivitys -->
+    <Button fx:id="deleteButton" text="Delete"/> <!-- Poisto -->
+
+    <!-- Lista tallennetuista muistiinpanoista -->
+    <ListView fx:id="notesList"/>
+</VBox>
